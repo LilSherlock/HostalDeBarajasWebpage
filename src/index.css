@@ -30,7 +30,7 @@ bottom: 0;
 }
 
 .navBar {
-  background-color: rgba(183, 201, 77, 0.744);
+  background-color: rgba(194, 198, 170, 0.744);
   height: fit-content;
   display: flex;
   align-items: center;
@@ -46,7 +46,7 @@ bottom: 0;
   cursor: pointer;
 }
 .burgerContent {
-  background-color: rgba(183, 201, 77, 0.744);
+  background-color: rgba(194, 198, 170, 0.744);
   max-height: 0px;
   transition: all 0.3s ease-in-out;
   top: 79px;
