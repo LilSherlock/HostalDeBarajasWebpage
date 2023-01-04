@@ -33,7 +33,7 @@
         }
         html,body
         {
-            width: 100%;
+            /* width: 100%; */
             /* height: 100%; */
             margin: 0px;
             padding: 0px;
@@ -43,49 +43,68 @@
         #ReactSimpleImageViewer {
           z-index: 4;
         }
-
-        .roomContainer{
-          width: 100%;
+        .place-card-large div {
+          display: none;
+        }
+        .location {
+          margin: 0px auto; 
           display: flex;
           justify-content: space-between;
           flex-wrap: wrap;
-          margin: 50px auto;
+          width: 90%;
+          font-family: inherit;
+          font-size: inherit;
+          line-height: inherit;
         }
-
-        .roomItems {
-          margin: 0px auto;
-          position: relative;
-          width: auto;
+        .formContact {
+          width: 40%;
         }
-        
-        .roomDescription{
-          position: absolute;
+        .formContact input, textarea {
           width: 100%;
-          color: white;
-          background-color: rgba(75, 44, 154, 0.484);
-          border-bottom: 1px white sol;
+          background-color: #ededed;
+          border: 0px solid ;
+          padding: 15px 10px;
+          resize: none;
+          font-family: inherit;
+          font-size: inherit;
+          line-height: inherit;
         }
-
-        .roomDescription p {
-          padding: 0px 20px;
-          font-size: 18px;
-          line-height: 0.5;
-          font-style: italic;
+        .contactInformation h1 {
+          color: rgb(205, 39, 39);
         }
-
-        .containerRoomImages {
-          position: absolute;
-          color: white;
-          bottom: -40px;
-          width: 100%;
+        .contactIcons {
           display: flex;
+          align-items: center;
+          margin: 0px;
+          line-height: 0.1em;
+        }
+        .contactIcons p {
+          line-height: 1.4em;
+          margin: 8px;
+        }
+        .formContact textarea {
+          height: 200px;
+        }
+        .formContact ::placeholder {
+          color: #333;
+          font-family: inherit;
+          font-size: inherit;
+          line-height: inherit;
+        }
+        .googleMaps {
+          height: 700px;
+          width: 50%;
         }
 
-        .mainRoomPicture {
-          width: 700px;
-          height: 850px;
+        @media only screen and (max-width: 700px) {
+          .googleMaps {
+            width: 100%;
+          }
+          .formContact {
+            width: 100%;
+            margin-bottom: 10px;
+          }
         }
-        
 
     </style>
   </head>

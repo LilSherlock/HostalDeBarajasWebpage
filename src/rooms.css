@@ -1,0 +1,64 @@
+.roomContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0px 0px;
+  }
+
+  .room {
+    width: 45%;
+    position: relative;
+    margin: 0px auto;
+  }
+
+  .roomItems {
+    margin: 0px auto;
+    position: relative;
+    width: 100%;
+    margin-bottom: 0px
+  }
+  
+  .roomDescription{
+    position: absolute;
+    width: 100%;
+    color: white;
+    background-color: rgba(24, 14, 49, 0.412);
+    border-bottom: 1px white solid;
+  }
+
+  .roomDescription p {
+    padding: 0px 20px;
+    font-size: 0.9em;
+    line-height: 0.2;
+    font-style: italic;
+  }
+
+  .containerRoomImages {
+    border-top: 5px solid black;
+    color: white;
+    width: 100%;
+    display: flex;
+  }
+
+  .mainRoomPicture {
+    border-bottom: 5px solid black;
+    width: 100%;
+    height: 650px;
+    object-fit: cover;
+  }
+
+  .subImagesRoom {
+    object-fit: cover;
+    width:20%; 
+    height: 150px;
+  }
+  @media only screen and (max-width: 700px) {
+
+    .room {
+      width: 80%;
+    }
+    .subImagesRoom {
+      height: 100px;
+    }
+  }   

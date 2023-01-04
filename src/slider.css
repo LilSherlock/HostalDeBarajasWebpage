@@ -28,19 +28,27 @@
 .buttonGroup {
     display: flex;
     justify-content: center;
+    width: 90%;
+    margin: auto;
 }
 .buttonMain {
     background-color: transparent;
     padding: 15px 50px;
-    background-color: rgb(209, 100, 22);
+    background-color: rgb(170, 186, 81);
     border-color: transparent;
     border-radius: 2px;
-    color: white;
+    /* margin: auto;   */
+    color: black;
     font-weight: bold;
+    text-align: center;
 }
 @media only screen and (max-width: 700px) {
     .mainText {
-        font-size: 2.3em;
+        font-size: 2.2em;
+    }
+    .buttonMain {
+        width: 90%;
+        padding: 15px;
     }
 }
 @keyframes fade {

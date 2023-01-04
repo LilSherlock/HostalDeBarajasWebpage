@@ -2,9 +2,15 @@ import logo from './logo.svg';
 import './navBar.css';
 import './slider.css';
 import './information.css'
+
+import './rooms.css'
 import { useState, useEffect, useCallback } from 'react';
 
 import ImageViewer from 'react-simple-image-viewer';
+
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPhone, faEnvelope, faLocationDot } from '@fortawesome/free-solid-svg-icons'
 let NavBar = () => {
 
     const [checked, setChecked] = useState(false)
@@ -36,9 +42,8 @@ let NavBar = () => {
                     <div className="content">
                         <a href="#inicio">Inicio</a>
                         <a href="#informacion">Informacion</a>
-                        <a>Habitaciones</a>
-                        <a>Ubicacion</a>
-                        <a>Contacto</a>
+                        <a href='#rooms'>Habitaciones</a>
+                        <a href='#location'>Contacto</a>
                     </div>
                 </div>
             </div>
@@ -52,9 +57,6 @@ let NavBar = () => {
                 </div>
                 <div className="burguerMenu">
                     Habitaciones
-                </div>
-                <div className="burguerMenu">
-                    Ubicacion
                 </div>
                 <div className="burguerMenu">
                     Contacto
@@ -87,7 +89,7 @@ let MainContent = () => {
                 } else {
                     setImageNumber(imageNumber + 1)
                 }
-            }, 200000)
+            }, 20000)
             return () => clearInterval(myInterval);
         });
 
@@ -123,7 +125,7 @@ let MainContent = () => {
     let InformationContainer = () => {
         return <>
             <div className="informationContainer" id="informacion">
-                <br />
+                <br /><br /><br /><br /><br />
                 <div className="mainInformation">
                     Informacion acerca de nosotros
                 </div>
@@ -149,6 +151,9 @@ let MainContent = () => {
     let HostelRoom = () => {
         const [currentImage, setCurrentImage] = useState(0);
         const [isViewerOpen, setIsViewerOpen] = useState(false);
+
+
+        const [selectImages, setSelectImages] = useState(null);
         let doubleRoom = [
             './double-room/double-room1.jpg',
             './double-room/double-room2.jpg',
@@ -166,7 +171,9 @@ let MainContent = () => {
             './double-room/double-room8.jpg',
         ]
 
-        const openImageViewer = useCallback((index) => {
+        const openImageViewer = useCallback((index, value) => {
+
+            setSelectImages(value)
             setCurrentImage(index);
             setIsViewerOpen(true);
         }, []);
@@ -177,50 +184,58 @@ let MainContent = () => {
         };
 
         return <>
-            <div className='roomContainer'>
-                <div className="roomItems">
-                    <div className="roomDescription">
-                        <p style={{fontSize: "30px", fontWeight: "bolder"}}>Habitacion Doble</p>
-                        <p>Amplia habitacion para 2 personas, incluye </p>
-                        <p>una cama doble y television, habitacion de de 3m²</p>
-                        <p>Con baño privado, armario y aire acondicionado </p>
-                        &nbsp;
-                        <p style={{fontSize: "13px"}}>Wi-Fi, Aire Acondicionado, TV LCD, Baño privado, Escritorio</p>
+            <div className="rooms" id="rooms">
+                <br /><br /><br /><br /><br /><br />
+                <div className='roomContainer'>
+                    <div className="room">
+                        <div className="roomItems">
+                            <div className="roomDescription">
+                                <p style={{fontSize: "1.5em", fontWeight: "bolder"}}>Habitacion Doble</p>
+                                <p>Amplia habitacion para 2 personas, incluye </p>
+                                <p>una cama doble y television, habitacion de de 3m²</p>
+                                <p>Con baño privado, armario y aire acondicionado </p>
+                                &nbsp;
+                                <p style={{fontSize: "0.8em"}}>Wi-Fi, Aire Acondicionado, TV LCD, Baño privado, Escritorio</p>
+                            </div>
+                            <img src={doubleRoom[0]} onClick={() => openImageViewer(0, doubleRoom)} key={0} alt="" className='mainRoomPicture' />
+                        </div>
+                        <div className="containerRoomImages">
+                            <img src={doubleRoom[1]} onClick={() => openImageViewer(1, doubleRoom)} key={1} alt="" className='subImagesRoom'/>
+                            <img src={doubleRoom[2]} onClick={() => openImageViewer(2, doubleRoom)} key={2} alt="" className='subImagesRoom'/>
+                            <img src={doubleRoom[3]} onClick={() => openImageViewer(3, doubleRoom)} key={3} alt="" className='subImagesRoom'/>
+                            <img src={doubleRoom[4]} onClick={() => openImageViewer(4, doubleRoom)} key={4} alt="" className='subImagesRoom'/>
+                            <img src={doubleRoom[5]} onClick={() => openImageViewer(5, doubleRoom)} key={5} alt="" className='subImagesRoom'/>
+                        </div>
+                        <br />
                     </div>
-                    <div className="containerRoomImages">
-                        <img src={doubleRoom[1]} onClick={() => openImageViewer(1)} key={1} alt="" width="20%" height="150px"/>
-                        <img src={doubleRoom[2]} onClick={() => openImageViewer(2)} key={2} alt="" width="20%" height="150px"/>
-                        <img src={doubleRoom[3]} onClick={() => openImageViewer(3)} key={3} alt="" width="20%" height="150px"/>
-                        <img src={doubleRoom[4]} onClick={() => openImageViewer(4)} key={4} alt="" width="20%" height="150px"/>
-                        <img src={doubleRoom[5]} onClick={() => openImageViewer(5)} key={5} alt="" width="20%" height="150px"/>
-                    </div>
-                    <img src={doubleRoom[0]} onClick={() => openImageViewer(0)} key={0} alt="" className='mainRoomPicture' />
-                </div>
+                    <div className="room">
+                        <div className="roomItems">
+                            <div className="roomDescription">
+                                <p style={{fontSize: "1.2em", fontWeight: "bolder"}}>Habitacion Individual</p>
+                                <p>Amplia habitacion para 2 personas, incluye </p>
+                                <p>un camarote y television, habitacion de de 3m²</p>
+                                <p>Con baño privado, armario y aire acondicionado </p>
+                                &nbsp;
+                                <p style={{fontSize: "0.8em"}}>Wi-Fi, Aire Acondicionado, TV LCD, Baño privado, Escritorio</p>
+                            </div>
+                            <img src={oneRoom[0]} onClick={() => openImageViewer(0, oneRoom)} key={0} alt="" className='mainRoomPicture'/>
+                        </div>
+                        <div className="containerRoomImages">
+                            <img src={oneRoom[1]} onClick={() => openImageViewer(1, oneRoom)} key={1} alt="" className='subImagesRoom'/>
+                            <img src={oneRoom[2]} onClick={() => openImageViewer(2, oneRoom)} key={2} alt="" className='subImagesRoom'/>
+                            <img src={oneRoom[3]} onClick={() => openImageViewer(3, oneRoom)} key={3} alt="" className='subImagesRoom'/>
+                            <img src={oneRoom[4]} onClick={() => openImageViewer(4, oneRoom)} key={4} alt="" className='subImagesRoom'/>
+                            <img src={doubleRoom[5]} onClick={() => openImageViewer(5, doubleRoom)} key={5} alt="" className='subImagesRoom'/>
+                        </div>
 
-                <div className="roomItems">
-                    <div className="roomDescription">
-                        <p style={{fontSize: "30px", fontWeight: "bolder"}}>Habitacion Individual</p>
-                        <p>Amplia habitacion para 2 personas, incluye </p>
-                        <p>un camarote y television, habitacion de de 3m²</p>
-                        <p>Con baño privado, armario y aire acondicionado </p>
-                        &nbsp;
-                        <p style={{fontSize: "13px"}}>Wi-Fi, Aire Acondicionado, TV LCD, Baño privado, Escritorio</p>
                     </div>
-                    <div className="containerRoomImages">
-                        <img src={oneRoom[1]} onClick={() => openImageViewer(1)} key={1} alt="" width="20%" height="150px"/>
-                        <img src={oneRoom[2]} onClick={() => openImageViewer(2)} key={2} alt="" width="20%" height="150px"/>
-                        <img src={oneRoom[3]} onClick={() => openImageViewer(3)} key={3} alt="" width="20%" height="150px"/>
-                        <img src={oneRoom[4]} onClick={() => openImageViewer(4)} key={4} alt="" width="20%" height="150px"/>
-                        <img src={doubleRoom[5]} onClick={() => openImageViewer(5)} key={5} alt="" width="20%" height="150px"/>
-                    </div>
-                    <img src={oneRoom[0]} onClick={() => openImageViewer(0)} key={0} alt="" className='mainRoomPicture'/>
                 </div>
-
+                <br />
             </div>
 
             {isViewerOpen && (
                 <ImageViewer
-                    src={doubleRoom}
+                    src={selectImages}
                     currentIndex={currentImage}
                     disableScroll={true}
                     closeOnClickOutside={true}
@@ -232,12 +247,62 @@ let MainContent = () => {
 
     }
 
+    let Location = () => {
+        let map = <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d924.8098129973093!2d-75.54071633985014!3d10.422298747872476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ef62f9d45001539%3A0x82600f60ff0faf33!2sBARAJAS%20HOUSE%20HOSTEL!5e1!3m2!1ses!2sco!4v1672732310888!5m2!1ses!2sco" width="100%" height='100%' loading="lazy"></iframe>
+        return <>
+            <div className="location" id='location'>
+                <div className="formContact">
+                    <div className="contactInformation">
+                        <strong>
+                            <h1>Hostal Casa De Barajas</h1>
+                        </strong>
+                        <h3>Reserve directamente con nosostros para una mejor atencion.</h3>
+                        <h1>Obten el mejor precio y el mejor servicio</h1>
+                        <div className='contactIcons'>
+                            <FontAwesomeIcon icon={faPhone} />
+                            &nbsp;
+                            <p>332323232</p>
+                        </div>
+                        <div className="contactIcons">
+                            <FontAwesomeIcon icon={faEnvelope} /> 
+                            &nbsp;
+                            <p>hostalcasadebarajas@gmail.com</p>
+                        </div>
+                        <div className="contactIcons">
+                            <FontAwesomeIcon icon={faLocationDot} />
+                            &nbsp;
+                            <p>Barrio el espinal Cr 15 N 31-95, 153195 Cartagena de Indias, Colombia</p>
+                        </div>
+                    </div>
+                    <form>
+                        <input type="text" name="user_name" placeholder='Nombre' />
+                        <br /><br />
+                        <input type="email" name="user_email" placeholder='Email'/>
+                        <br /><br />
+                        <input type='text' name="user_email" placeholder='Numero de celular'/>
+                        <br /><br />
+                        <textarea name="message" placeholder='Mensaje' />
+                        <br /><br />
+                        <div style={{width: "100%"}}>
+                            <input type="submit" value="Send" style={{width: "50%", display: "flex", justifyContent: "center", margin: "0px auto"}} />
+                        </div>
+                    </form>
+                </div>
+                <div className="googleMaps">
+                    {map}
+                </div>
+            </div>
+            <br /><br />
+        </>
+    }
+
     return <>
         <div>
 
             <SliderContainer />
             <InformationContainer />
             <HostelRoom />
+            <Location/>
         </div>
     </>
 }
