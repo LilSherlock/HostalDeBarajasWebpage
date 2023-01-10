@@ -67,6 +67,8 @@ bottom: 0;
   margin: 0px 50px 0px 0px;
   padding-left: 20px;
   z-index: 2;
+  text-decoration: none;
+  color: black;
   cursor: pointer;
 }
 .burguerMenu:hover {

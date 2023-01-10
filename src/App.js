@@ -4,15 +4,16 @@ import './slider.css';
 import './information.css'
 
 import './rooms.css'
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 
 import ImageViewer from 'react-simple-image-viewer';
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPhone, faEnvelope, faLocationDot } from '@fortawesome/free-solid-svg-icons'
+import { faPhone, faEnvelope, faLocationDot, faYoutube } from '@fortawesome/free-solid-svg-icons'
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 let NavBar = () => {
-
+    const checker = useRef(null);
     const [checked, setChecked] = useState(false)
     let handleChange = () => {
         if (!checked) {
@@ -21,13 +22,17 @@ let NavBar = () => {
         } else {
             setChecked(false)
             document.querySelector('.burguer').style = 'transform: rotate(0deg)'
+
+            checker.current.checked = false
+            
+
         }
     }
     return <>
         <nav>
             <div className="navBar">
                 <div style={{ marginLeft: 20 }}>
-                    <img src={"./logo.png"} alt="" className="logo" />
+                    <img src={"./Logo.png"} alt="" className="logo" />
                 </div>
                 <label htmlFor="state">
                     <div className="burguer">
@@ -47,20 +52,12 @@ let NavBar = () => {
                     </div>
                 </div>
             </div>
-            <input type="checkbox" id="state" hidden onChange={handleChange} />
+            <input type="checkbox" id="state" hidden onChange={handleChange} ref={checker} />
             <div className="burgerContent">
-                <div className="burguerMenu">
-                    Inicio
-                </div>
-                <div className="burguerMenu">
-                    Informacion
-                </div>
-                <div className="burguerMenu">
-                    Habitaciones
-                </div>
-                <div className="burguerMenu">
-                    Contacto
-                </div>
+                <a href="#inicio" className="burguerMenu" onClick={handleChange}>Inicio</a>
+                <a href="#informacion" className="burguerMenu" onClick={handleChange}>Informacion</a>
+                <a href='#rooms' className="burguerMenu" onClick={handleChange}>Habitaciones</a>
+                <a href='#location' className="burguerMenu" onClick={handleChange}>Contacto</a>
             </div>
         </nav>
     </>
@@ -78,6 +75,17 @@ let MainContent = () => {
         ];
 
         let images = <img src={packImages[imageNumber]['src']} className="featureImage" />
+
+        let whatsAPP = () => {
+
+            window.location.href = 'https://wa.me/573042371189';
+
+        }
+
+        let contact = () => {
+            window.location.href = '#location';
+
+        }
 
         useEffect(() => {
             const myInterval = setInterval(() => {
@@ -108,12 +116,14 @@ let MainContent = () => {
                     <br />
                     <br />
                     <div className="buttonGroup">
-                        <button className="buttonMain">
+                        <button className="buttonMain" style={{ backgroundColor: "rgb(126, 117, 117)" }} onClick={contact}>
                             Contactanos
                         </button>
                         &nbsp;&nbsp;
-                        <button className="buttonMain" style={{ backgroundColor: "rgb(126, 117, 117)" }}>
-                            Contactanos
+                        <button className="buttonMain" onClick={whatsAPP}>
+                            <FontAwesomeIcon icon={faWhatsapp} size="xl"/>
+                            &nbsp;
+                            Escribenos
                         </button>
                     </div>
                 </div>

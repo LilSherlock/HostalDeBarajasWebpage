@@ -61,4 +61,7 @@
     .subImagesRoom {
       height: 100px;
     }
+    .roomDescription p {
+      line-height: 1;
+    }
   }   
